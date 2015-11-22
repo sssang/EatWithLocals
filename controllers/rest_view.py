@@ -1,14 +1,14 @@
 from flask import render_template, redirect, request, url_for
 from flask.views import MethodView
 
-from models.pic import Pic
+from models.photo import Photo
 from models.review import Review
 
 class RestAPI(MethodView):
     def get(self):
-        restname = request.args.get('restname')
-        pics = Pic.get_rest_pics(restname)
-        reviews = Review.get_rest_reviews(restname)
+        restid = request.args.get('restid')
+        pics = Photo.get_rest_pics(restid)
+        reviews = Review.get_rest_reviews(restid)
         return render_template('rest_index.html', pics=pics, reviews=reviews)
 
     def post(self):
