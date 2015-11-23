@@ -6,7 +6,5 @@ class IndexAPI(MethodView):
         return render_template('index.html')
 
     def post(self):
-        op = request.form.get('op')
-        if op == 'search':
-            keyword = request.form.get('keyword')
-            return redirect(url_for('search_result') + '?keyword=' + keyword)
+        keyword = request.form.get('keyword')
+        return redirect(url_for('search_result') + '?keyword=' + keyword)

@@ -1,0 +1,149 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-image: url("../pictures/background.png");
+    background-repeat: repeat;
+    padding-bottom: 40px;
+}
+.container{
+    padding-top:40px;
+}
+#banner {
+    background: url("../pictures/banner1.png") no-repeat fixed;
+    background-size: 100%;
+    height: 500px;
+    position: relative;
+}
+
+#header {
+    font-family: "Helvetica";
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    font-size: 80px;
+    margin-bottom:25px;
+}
+
+#head_banner {
+    background: url("../pictures/head_banner.png");
+    background-repeat: no-repeat;
+    height: 90px;
+    opacity: 0.85;
+    position: relative;
+}
+
+.jumbotron > #whitebox {
+    background: rgba(255, 255, 255, 0.29);
+    height: 50px;
+    width: 220px;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 6px;
+}
+
+.container {
+    position: relative;
+}
+
+#head_banner > .container > #search_box {
+    position: absolute;
+    top: 0;
+    margin-top: 28px;
+    opacity: 0.95;
+}
+
+.jumbotron > #search_box {
+    height: 100px;
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    bottom: 0;
+    padding-top: 33px;
+}
+
+#search_box > #search {
+    width: 100%;
+    margin: 0 auto;
+    opacity: 0.85;
+}
+
+#search_button {
+    width: 150px;
+}
+#whitebox > #learn {
+    color: white;
+    opacity: 0.7;
+    font-size: 25px;
+}
+
+#AnnArbor{
+    padding-right: 15px;
+    max-width:100%;
+    max-height: 100%;
+}
+
+#Cancun{
+    max-width: 100%;
+    max-height: 100%
+}
+
+#SantaMonica{
+    margin-top: 43px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#sub_banner {
+    background: rgba(2,29,73,0.09);
+    height: 300px;
+}
+
+
+#sort_by {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(96,98,102, 0.9);
+    padding-top: 50px;
+}
+
+#average_price {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(96,98,102, 0.9);
+    padding-top: 110px;
+}
+
+#rating {
+    width: 15%;
+    margin-left: 130px;
+}
+
+#distance {
+    width: 15%;
+    margin-left: 40px;
+}
+
+.img-circle {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+#rest_img {
+    margin-left: 47.5px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#rest_info {
+    margin-left: 15px;
+    font-size: 18px;
+    color: rgba(0,40,86, 1);
+}
+
+#star {
+    width: 8%;
+}

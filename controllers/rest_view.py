@@ -6,7 +6,7 @@ from models.review import Review
 
 class RestAPI(MethodView):
     def get(self):
-        restid = request.args.get('restid')
+        restid = request.args.get('id')
         pics = Photo.get_rest_pics(restid)
         reviews = Review.get_rest_reviews(restid)
         return render_template('rest_index.html', pics=pics, reviews=reviews)

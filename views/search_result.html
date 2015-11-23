@@ -1,0 +1,50 @@
+{% extends "header.html" %}
+{% block content %}
+<div id="sub_banner">
+  <div class="container">
+    <div id="criteria">
+      <p id="sort_by"> Sort By:
+        <span>
+          <img src="static/pictures/Rating.png" id="rating">
+        </span>
+        <span>
+          <img src="static/pictures/Distance.png" id="distance">
+        </span>
+      </p>
+      <p id="average_price"> Average Price:
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+  {% for rest in rests %}
+    <div class="col-md-2">
+      <img src="{{ rest.picurl }}" class="img-circle" id="rest_img">
+    </div>
+    <div class="col-md-4">
+      <div id="rest_info">
+        <p> {{ loop.index }}. &nbsp<span>
+          <a href="{{url_for('rest_index')}}?id = {{rest.restid}}">{{rest.restname}} </a></span>
+        </p>
+        <p>
+          {% if (((rest.rating*10)|int)/10)|int == rest.rating %}
+            {% for i in range(0, (rest.rating|int)) %}
+              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{rest.rating}}"></span>
+            {% endfor %}
+          {% else %}
+            {% for i in range(0, ((rest.rating-0.5)|int)) %}
+              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{rest.rating}}"></span>
+            {% endfor %}
+            <span><img src="static/pictures/half-star.png" id="star" alt="rating: {{rest.rating}}"></span>
+          {% endif %}
+        </p>
+        <p>
+          {{rest.resttag}}
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

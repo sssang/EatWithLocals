@@ -2,13 +2,14 @@ from models import mysql
 
 class Rest(object):
     def __init__(self, restid=None, restname=None, picurl=None, resttag=None, rating=None,
-                 address=None, created=None, updated=None):
+                 address=None, place=None, created=None, updated=None):
         self.restid=restid
         self.restname=restname
         self.picurl=picurl
         self.resttag=resttag
         self.rating=rating
         self.address=address
+        self.place=place
         self.created=created
         self.updated=updated
 

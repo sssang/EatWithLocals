@@ -12,7 +12,7 @@ class Photo(object):
         connection = mysql.connect()
         cursor = connection.cursor()
 
-        sql = "select Photo.picid, Photo.url, Photo.format, Photo.created from Photo inner join PhotoCantain on Photo.picid=PhotoContain.picid where PhotoContain.restid=%s order by PhotoContain.sequencenum asc"
+        sql = "select Photo.picid, Photo.url, Photo.format, Photo.created from Photo inner join PhotoContain on Photo.picid=PhotoContain.picid where PhotoContain.restid=%s order by PhotoContain.sequencenum asc"
         cursor.execute(sql, (restid,))
         data = cursor.fetchall()
 

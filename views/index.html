@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="jumbotron" id="banner">
+    <h1 id="header">Eat With Locals</h1>
+    <div id="whitebox">
+      <a href=# id="learn">Learn More</a>
+    </div>
+    <div id="search_box">
+      <form action="{{ url_for('index') }}" method="POST" id="search">
+        <div class="input-group input-group-md">
+          <input type="text" class="form-control" placeholder="Ann Arbor, Michigan" name="keyword">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" id="search_button">Search!</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <a href= "{{ url_for('search_result')}}?keyword=Ann Arbor, Michigan">
+          <img src="static/pictures/AnnArbor.png" id="AnnArbor">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href= "{{ url_for('search_result')}}?keyword=Cancun">
+          <img src="static/pictures/Cancun.png" id="Cancun">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href= "{{ url_for('search_result')}}?keyword=Santa Monica, California">
+          <img src="static/pictures/SantaMonica.png" id="SantaMonica">
+        </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
