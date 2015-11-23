@@ -65,9 +65,10 @@ body {
     padding-top: 33px;
 }
 
-#search_box > #search {
+.jumbotron > #search_box > .container > #search {
     width: 100%;
-    margin: 0 auto;
+    position: absolute;
+    top: 0;
     opacity: 0.85;
 }
 
