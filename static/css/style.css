@@ -249,4 +249,16 @@ body {
 .rev_rating > input:checked + label:hover, /* hover current star when changing rating */
 .rev_rating > input:checked ~ label:hover,
 .rev_rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rev_rating > input:checked ~ label:hover ~ label { color: rgba(56,144,208,1);  } 
+.rev_rating > input:checked ~ label:hover ~ label { color: rgba(56,144,208,1);  }
+
+
+input[type=text] {
+    padding:5px;
+    border:2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
