@@ -26,7 +26,7 @@
     <div class="col-md-4">
       <div id="rest_info">
         <p> {{ loop.index }}. &nbsp<span>
-          <a href="{{url_for('rest_index')}}?id = {{rest.restid}}">{{rest.restname}} </a></span>
+          <a href="{{url_for('rest_index')}}?id={{rest.restid}}">{{rest.restname}} </a></span>
         </p>
         <p>
           {% if (((rest.rating*10)|int)/10)|int == rest.rating %}

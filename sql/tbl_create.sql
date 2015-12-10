@@ -19,6 +19,7 @@ CREATE TABLE Photo
         format CHARACTER(3) NOT NULL,
         created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY(picid)
+
 );
 
 create table Review

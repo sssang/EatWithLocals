@@ -37,3 +37,16 @@ class Rest(object):
 
         cursor.close()
         connection.close()
+
+    @classmethod
+    def get_rest_object(cls, restid):
+        connection = mysql.connect()
+        cursor = connection.cursor()
+
+        sql = "select * from Rest where restid=%s"
+        cursor.execute(sql,(restid,))
+        data = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+        return [cls(*t) for t in data] if data else []
