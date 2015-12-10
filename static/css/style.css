@@ -1,3 +1,5 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 html {
     position: relative;
     min-height: 100%;
@@ -216,3 +218,35 @@ body {
 .Review {
   background: rgba(2,29,73,0.09);
 }
+
+.rev_rating { 
+  border: none;
+  float: left;
+}
+
+.rev_rating > input { display: none; } 
+.rev_rating > label:before { 
+  margin: 5px;
+  font-size: 40px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rev_rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rev_rating > label { 
+ color: #CCC; 
+ float: right; 
+}
+.rev_rating > input:checked ~ label, /* show gold star when clicked */
+.rev_rating:not(:checked) > label:hover, /* hover current star */
+.rev_rating:not(:checked) > label:hover ~ label { color:rgba(163,200,227,1);  } /* hover previous stars in list */
+
+.rev_rating > input:checked + label:hover, /* hover current star when changing rating */
+.rev_rating > input:checked ~ label:hover,
+.rev_rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rev_rating > input:checked ~ label:hover ~ label { color: rgba(56,144,208,1);  } 
