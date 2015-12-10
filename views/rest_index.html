@@ -7,9 +7,8 @@
     <div id="criteria">
       <div class = row>
           <p></p>
-          <div class = "col-md-2">
-          </div>
-          <div class="col-md-4">
+
+          <div class="col-md-4" style="margin-left:70px;">
               <h1 style="color:#596578; font-size:85px;">{{picobject[0].restname}}</h1>
               <p>
           {% if (((picobject[0].rating*10)|int)/10)|int == picobject[0].rating %}
@@ -75,36 +74,41 @@
       margin-top:1cm;
   }
   </style>
-    <div class = "review" style="margin-left:20px;">
+
+    <div class = "Review">
+        <div class="Reviews" style="margin-left:70px">
+        <h1>Reviews:</h1>
     {% for review in reviews %}
         <div class ="row">
+            <div class="col-md-2">
+                <h4>{{ review.revid}}</h4>
+            </div>
+            <div class="col-md-2">
+                <p>
+          {% if (((review.rating*10)|int)/10)|int == review.rating %}
+            {% for i in range(0, (review.rating|int)) %}
+              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{review.rating}}"></span>
+            {% endfor %}
+          {% else %}
+            {% for i in range(0, ((review.rating-0.5)|int)) %}
+              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{review.rating}}"></span>
+            {% endfor %}
+            <span><img src="static/pictures/half-star.png" id="star" alt="rating: {{review.rating}}"></span>
+          {% endif %}
+        </p>
+            </div>
             <p>{{ review.content }}</p>
         </div>
     {% endfor %}
     </div>
-
+</div>
 
   </div>
 
 </div>
 
 
-    <br>
-    <br>
-    <br>
-      <br>
-    <br>
-    <br>  <br>
-    <br>
-    <br>  <br>
-    <br>
-    <br>  <br>
-    <br>
-    <br>  <br>
-    <br>
-    <br>  <br>
-    <br>
-    <br>
+
 
 <script type="text/javascript">
   var geocoder;
