@@ -50,7 +50,7 @@ class Review(object):
             rating_new = rating
             sql = "insert into CountryRating(rating, restid, country) values (%s, %s, %s)"
         else:
-            rating_new = (data[0][0] + rating)*0.5
+            rating_new = (float(data[0][0]) + float(rating))*0.5
             sql = "update CountryRating set rating=%s where restid=%s and country=%s"
 
         cursor.execute(sql, (rating_new, restid, country))
