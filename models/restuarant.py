@@ -2,16 +2,18 @@ from models import mysql
 
 class Rest(object):
     def __init__(self, restid=None, restname=None, picurl=None, resttag=None, rating=None,
-                 address=None, place=None, created=None, updated=None):
+                 address=None, city=None,state=None,country=None, created=None, lastupdated=None):
         self.restid=restid
         self.restname=restname
         self.picurl=picurl
         self.resttag=resttag
         self.rating=rating
         self.address=address
-        self.place=place
+        self.city=city
+        self.state=state
+        self.country=country
         self.created=created
-        self.updated=updated
+        self.lastupdated=lastupdated
 
     @classmethod
     def get_rests_by_kw(cls, keyword):
