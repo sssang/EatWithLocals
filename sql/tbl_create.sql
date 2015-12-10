@@ -83,3 +83,11 @@ create table CountryRating
         country varchar(255) not null,
         constraint cr_restid_frk foreign key (restid) references Rest(restid)
 );
+
+create table RestGeo
+(
+        restid integer unsigned not null,
+        latitude double not null,
+        longitude double not null,
+        constraint rg_restid_frk foreign key (restid) references Rest(restid)
+)

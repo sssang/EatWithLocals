@@ -24,7 +24,10 @@
       <p id="average_price">
         Average Price:
       </p>
-      <form id="avgp_form" action="POST">
+       <p id="origin_place">
+        Where Do You Come From:
+      </p>
+      <form id="avgp_form" action="{{ url_for('search_result') }}" method="POST" >
         <div data-role="rangeslider" id="range_div">
           <b class="range_label">$0&nbsp&nbsp&nbsp&nbsp</b>
           <input id="avgp_price" name="p_range" type="text" data-slider-id="ap" data-slider-min="0"
@@ -34,9 +37,14 @@
         </div>
 
         <input id="sort_method" type="hidden" name="sort_by" value="{{sort_by}}">
+        <input id="country_input" type="text" name="country"
+               placeholder="Tell us where do you come from so that we could recommend better restaurant">
+        <button type="submit" class="btn btn-default btn-md" id="update_btn">Update!</button>
+
         <input type="hidden" name="op" value="update">
         <input type="hidden" name="keyword" value="{{keyword}}">
-        <button type="submit" class="btn btn-default btn-md" id="update_btn">Update!</button>
+        <input type="hidden" name="current_lat" id="geo_lat">
+        <input type="hidden" name="current_long" id="geo_long">
       </form>
     </div>
   </div>
@@ -45,10 +53,10 @@
 <div class="container">
   <div class="row">
   {% for rest in rests %}
-    <div class="col-md-2">
+    <div class="col-md-2" style="margin-bottom: 20px">
       <img src="{{ rest.picurl }}" class="img-circle" id="rest_img">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin-bottom: 20px">
       <div id="rest_info">
         <p> {{ loop.index }}. &nbsp<span>
           <a href="{{url_for('rest_index')}}?id={{rest.restid}}">{{rest.restname}} </a></span>
@@ -56,13 +64,13 @@
         <p>
           {% if (((rest.rating*10)|int)/10)|int == rest.rating %}
             {% for i in range(0, (rest.rating|int)) %}
-              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{rest.rating}}"></span>
+              <span><img src="static/pictures/full-star.png" class="star" alt="rating: {{rest.rating}}"></span>
             {% endfor %}
           {% else %}
             {% for i in range(0, ((rest.rating-0.5)|int)) %}
-              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{rest.rating}}"></span>
+              <span><img src="static/pictures/full-star.png" class="star" alt="rating: {{rest.rating}}"></span>
             {% endfor %}
-            <span><img src="static/pictures/half-star.png" id="star" alt="rating: {{rest.rating}}"></span>
+            <span><img src="static/pictures/half-star.png" class="star" alt="rating: {{rest.rating}}"></span>
           {% endif %}
         </p>
         <p>
@@ -76,6 +84,13 @@
 <script>
  $("#avgp_price").slider({});
 
+ if("{{sort_by}}" === 'distance'){
+   console.log('sort by distance');
+   if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(change_position);
+     }
+ }
+ 
  function change_sort(sort_type){
    console.log(sort_type);
    $("#sort_method").val(sort_type);
@@ -86,7 +101,16 @@
    else{
      $("#rating").attr("src", "static/pictures/Rating_u.png");
      $("#distance").attr("src", "static/pictures/Distance_s.png");
+
+     if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(change_position);
+     }
    }
+ }
+
+ function change_position(position){
+   $("#geo_lat").val(position.coords.latitude);
+   $("#geo_long").val(position.coords.longitude);
  }
 </script>
 {% endblock %}
