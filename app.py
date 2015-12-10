@@ -3,6 +3,7 @@ from flask import Flask, render_template
 from controllers.index_view import IndexAPI
 from controllers.search_result import SearchAPI
 from controllers.rest_view import RestAPI
+from controllers.review_view import ReviewAPI
 
 from models import mysql
 
@@ -16,6 +17,7 @@ mysql.init_app(app)
 app.add_url_rule('/', view_func=IndexAPI.as_view('index'))
 app.add_url_rule('/search', view_func=SearchAPI.as_view('search_result'))
 app.add_url_rule('/restuarant', view_func=RestAPI.as_view('rest_index'))
+app.add_url_rule('/restuanrat/review', view_func=ReviewAPI.as_view('review'))
 
 
 @app.errorhandler(404)

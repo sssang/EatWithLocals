@@ -9,7 +9,8 @@ body {
     padding-bottom: 40px;
 }
 .container{
-    padding-top:40px;
+    padding-top:28px;
+    position: relative;
 }
 #banner {
     background: url("../pictures/banner1.png") no-repeat fixed;
@@ -43,10 +44,6 @@ body {
     text-align: center;
     vertical-align: middle;
     padding-top: 6px;
-}
-
-.container {
-    position: relative;
 }
 
 #head_banner > .container > #search_box {
@@ -108,19 +105,25 @@ body {
     position: absolute;
     font-size: 20px;
     color: rgba(96,98,102, 0.9);
-    padding-top: 50px;
+    margin-top: 30px;
 }
 
 #average_price {
     position: absolute;
     font-size: 20px;
     color: rgba(96,98,102, 0.9);
-    padding-top: 110px;
+    margin-top: 90px;
 }
 
+#origin_place {
+    position: absolute;
+    font-size: 18px;
+    color: rgba(96,98,102, 0.9);
+    margin-top: 150px;
+}
 #rating {
     width: 15%;
-    margin-left: 130px;
+    margin-left: 180px;
 }
 
 #distance {
@@ -145,13 +148,23 @@ body {
     color: rgba(0,40,86, 1);
 }
 
-#star {
+.star {
+    width: 5%;
+}
+
+.rest_star {
+    width: 4%;
+    margin-bottom: 15px;
+}
+
+.rev_star{
     width: 8%;
+    margin-bottom: 15px;
 }
 
 #avgp_form {
-    padding-top: 115px;
-    padding-left: 172px;
+    padding-top: 95px;
+    padding-left: 225px;
     width: 85%;
 }
 
@@ -188,6 +201,11 @@ body {
     text-decoration: none;
 }
 
+#country_input {
+    margin-left: 35px;
+    margin-top: 35px;
+    width: 85%;
+}
 #update_btn {
     margin-left: 35px;
     margin-top: 30px;

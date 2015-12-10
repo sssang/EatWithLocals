@@ -21,13 +21,31 @@ class Rest(object):
         connection = mysql.connect()
         cursor = connection.cursor()
 
-        sql = "select * from Rest where city=%s"
-        cursor.execute(sql, (keyword,))
+        sql = "select * from Rest where city=%s or state=%s or country=%s order by rating desc"
+        cursor.execute(sql, (keyword,keyword,keyword))
         data = cursor.fetchall()
 
         cursor.close()
         connection.close()
         return [cls(*t) for t in data] if data else []
+
+    @classmethod
+    def get_rests_by_distance(cls, keyword, latitude, longitude):
+        connection = mysql.connect()
+        cursor = connection.cursor()
+
+        print keyword
+        print latitude
+        print longitude
+
+        sql = "select Rest.restid, Rest.restname, Rest.picurl, Rest.resttag, Rest.description, Rest.rating, Rest.address, Rest.city, Rest.state, Rest.country, Rest.created, Rest.lastupdated, 3956 * ACOS(COS(RADIANS({1})) * COS(RADIANS(RestGeo.latitude)) * COS(RADIANS({2}) - RADIANS(RestGeo.longitude)) + SIN(RADIANS({1})) * SIN(RADIANS(RestGeo.latitude))) AS distance from Rest inner join RestGeo on Rest.restid=RestGeo.restid where Rest.city='{0}' or Rest.state='{0}' or Rest.country='{0}' order by distance asc".format(keyword, latitude, longitude)
+        cursor.execute(sql)
+        data = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+        return [cls(*t[:12]) for t in data] if data else []
+
 
     @classmethod
     def update_rating(cls, rating, restid):

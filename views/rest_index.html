@@ -1,125 +1,128 @@
 {% extends "header.html" %}
 {% block content %}
-
-
 <div id="sub_banner">
   <div class="rest_info">
     <div id="criteria">
-      <div class = row>
-          <p></p>
-
-          <div class="col-md-4" style="margin-left:70px;">
-              <h1 style="color:#596578; font-size:85px;">{{picobject[0].restname}}</h1>
-              <p>
-          {% if (((picobject[0].rating*10)|int)/10)|int == picobject[0].rating %}
-            {% for i in range(0, (picobject[0].rating|int)) %}
-              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{picobject[0].rating}}"></span>
-            {% endfor %}
-          {% else %}
-            {% for i in range(0, ((picobject[0].rating-0.5)|int)) %}
-              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{picobject[0].rating}}"></span>
-            {% endfor %}
-            <span><img src="static/pictures/half-star.png" id="star" alt="rating: {{picobject[0].rating}}"></span>
-          {% endif %}
-        </p>
-              <p>{{picobject[0].description}}</p>
-              <p style="color:#72BBF4">Want to learn more about <a>Menu</a>?</p>
+      <div class="row">
+        <div class="col-md-5" style="margin-left:270px;">
+          <div><h2 style="margin-bottom: 15px;color:#596578; font-size:60px;">{{picobject[0].restname}}</h2>
+            <span style="font-size: 14px;color: grey;font-weight: 300; margin-left:2px;">{{picobject[0].address}}</span></div>
+          <div style="margin-top:15px;">
+            {% if (((picobject[0].rating*10)|int)/10)|int == picobject[0].rating %}
+              {% for i in range(0, (picobject[0].rating|int)) %}
+                <span>
+                  <img src="static/pictures/full-star.png" class="rest_star"
+                       alt="rating: {{picobject[0].rating}}">
+                </span>
+              {% endfor %}
+            {% else %}
+              {% for i in range(0, ((picobject[0].rating-0.5)|int)) %}
+                <span>
+                  <img src="static/pictures/full-star.png" class="rest_star"
+                       alt="rating: {{picobject[0].rating}}">
+                </span>
+              {% endfor %}
+              <span>
+                <img src="static/pictures/half-star.png" class="rest_star"
+                     alt="rating: {{picobject[0].rating}}">
+              </span>
+              {% endif %}
           </div>
-          <div class="col-md-1"></div>
-          <body style="margin:0px; padding:0px;" onload="initialize()">
-            <div id="map_canvas" style="width:400px; height:250px"></div>
-        </body>
-      </div>
-
-    </div>
-
-  </div>
-  </div>
-
-<div id="content">
-    <div id="Carousel" class="carousel slide" data-interval="false" style="margin-top:1cm;margin-bottom: 2cm; margin-left:auto;margin-right:auto;width:500px;height:300px">
-        <ol class="carousel-indicators">
-            {% for pic in pics%}
-                <li data-target="#Carousel" data-slide-to="{{ loop.index-1 }}"{% if pic.picid==picid %}
-                    class="active" {% endif %}>
-                </li>
-            {% endfor %}
-        </ol>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            {% for pic in pics%}
-                <div class="item{% if loop.index == 1 %} active{% endif %}" >
-                    <img src="{{ pic.url }}">
-                </div>
-            {% endfor %}
+          <p>{{picobject[0].description}}</p>
+          <p style="font-size: 15px;color:#72BBF4">Want to learn more about <a>Menu</a>?</p>
         </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#Carousel" data-slide="prev"
-                style="background-image:linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%)">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#Carousel" data-slide="next"
-                style="background-image:linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%)">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
+        <div id="map_canvas" style="margin-left:50px;margin-top:20px;width:400px; height:250px" class="col-md-6">
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-      margin-top:1cm;
-  }
-  </style>
+<div id="content">
+  <div id="Carousel" class="carousel slide" data-interval="false" style="margin-top:1cm;margin-bottom: 2cm; margin-left:auto;margin-right:auto;width:800px;">
+    <ol class="carousel-indicators">
+      {% for pic in pics%}
+        <li data-target="#Carousel" data-slide-to="{{ loop.index-1 }}"{% if pic.picid==picid %}
+            class="active" {% endif %}>
+        </li>
+      {% endfor %}
+    </ol>
 
-    <div class = "Review">
-        <div class="Reviews" style="margin-left:70px">
-        <h1>Reviews:</h1>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      {% for pic in pics%}
+        <div class="item{% if loop.index == 1 %} active{% endif %}" >
+          <img src="{{ pic.url }}">
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#Carousel" data-slide="prev"
+       style="background-image:linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%)">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#Carousel" data-slide="next"
+       style="background-image:linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%)">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+</div>
+
+<style>
+ .carousel-inner > .item > img,
+ .carousel-inner > .item > a > img {
+   width: 70%;
+   margin: auto;
+   margin-top:1cm;
+ }
+</style>
+
+<div class = "review">
+  <div style="margin-left:270px">
+    <h1 style="color:#596578; margin-bottom: 30px;">Reviews
+    <span style="position:absolute; right:0; margin-right: 220px; opacity:0.6">
+      <button href="{{ url_for('review') }}?={{picobject[0].restid}}" class="btn btn-primary">Want to review?</button>
+    </span>
+    </h1>
+    <div class ="row">
     {% for review in reviews %}
-        <div class ="row">
-            <div class="col-md-2">
-                <h4>{{ review.revid}}</h4>
-            </div>
-            <div class="col-md-2">
-                <p>
+      <div class="col-md-2">
+        <p>
           {% if (((review.rating*10)|int)/10)|int == review.rating %}
             {% for i in range(0, (review.rating|int)) %}
-              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{review.rating}}"></span>
+              <span>
+                <img src="static/pictures/full-star.png" class="rev_star" alt="rating: {{review.rating}}">
+              </span>
             {% endfor %}
           {% else %}
             {% for i in range(0, ((review.rating-0.5)|int)) %}
-              <span><img src="static/pictures/full-star.png" id="star" alt="rating: {{review.rating}}"></span>
+              <span>
+                <img src="static/pictures/full-star.png" class="rev_star" alt="rating: {{review.rating}}">
+              </span>
             {% endfor %}
-            <span><img src="static/pictures/half-star.png" id="star" alt="rating: {{review.rating}}"></span>
-          {% endif %}
-        </p>
-            </div>
-            <p>{{ review.content }}</p>
-            <p>{{ review.country }}</p>
-        </div>
+            <span>
+              <img src="static/pictures/half-star.png" class="rev_star" alt="rating: {{review.rating}}">
+            </span>
+         {% endif %}
+       </p>
+      </div>
+      <p style="font-size: 18px;">{{ review.content }}</p>
+      <p style="font-size: 13px; color: grey">The reviewer is from: {{ review.country |capitalize}}</p>
+      <hr style="border-top:1px solid #DEDEDE; width: 68%;">
     {% endfor %}
     </div>
-</div>
-
   </div>
-
 </div>
-
-
-
 
 <script type="text/javascript">
   var geocoder;
   var map;
   var address ="{{picobject[0].address}}";
-  function initialize() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
     var myOptions = {
-      zoom: 8,
+      zoom: 15,
       center: latlng,
     mapTypeControl: true,
     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
@@ -155,7 +158,6 @@
         }
       });
     }
-  }
 </script>
 {% endblock %}
 
