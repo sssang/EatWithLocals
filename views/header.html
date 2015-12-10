@@ -5,7 +5,8 @@
     <div id="search_box">
       <form action="{{ url_for('index') }}" method="POST" id="search">
         <div class="input-group input-group-md">
-          <input type="text" class="form-control" value="{{keyword}}"" name="keyword">
+          <input type="hidden" name="op" value="search">
+          <input type="text" class="form-control" value="{{keyword}}" name="keyword">
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit" id="search_button">Search!</button>
           </span>
