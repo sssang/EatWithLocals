@@ -38,6 +38,9 @@
 
         <input id="sort_method" type="hidden" name="sort_by" value="{{sort_by}}">
         <input id="country_input" type="text" name="country"
+               {% if country != None %}
+                 value ="{{country}}"
+               {% endif %}
                placeholder="Tell us where do you come from so that we could recommend better restaurant">
         <button type="submit" class="btn btn-default btn-md" id="update_btn">Update!</button>
 

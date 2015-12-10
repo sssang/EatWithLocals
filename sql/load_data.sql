@@ -124,19 +124,19 @@ values ("5","12","卤水鸭","3");
 
 
 insert into Review(rating, content,city,state,country)
-values ("4","This restaurant is pretty good","ann arbor","michigan","united state");
+values ("4","This restaurant is pretty good","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (2,"1","1");
 
 insert into Review(rating, content,city,state,country)
-values ("1","This restaurant is too expensive","ann arbor","michigan","united state");
+values ("1","This restaurant is too expensive","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (2,"2","2");
 
 insert into Review(rating, content,city,state,country)
-values ("3","This restaurant is so so","ann arbor","michigan","united state");
+values ("3","This restaurant is so so","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (2,"3","3");
@@ -144,19 +144,19 @@ values (2,"3","3");
 
 
 insert into Review(rating, content,city,state,country)
-values ("5","There brunch is pretty good","ann arbor","michigan","united state");
+values ("5","There brunch is pretty good","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (1,"4","1");
 
 insert into Review(rating, content,city,state,country)
-values ("1","This restaurant is too small","ann arbor","michigan","united state");
+values ("1","This restaurant is too small","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (1,"5","2");
 
 insert into Review(rating, content,city,state,country)
-values ("3","The service is horrible","ann arbor","michigan","united state");
+values ("3","The service is horrible","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (1,"6","3");
@@ -166,19 +166,19 @@ values (1,"6","3");
 
 
 insert into Review(rating, content,city,state,country)
-values ("5","The FOOD is awesome","ann arbor","michigan","united state");
+values ("5","The FOOD is awesome","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (4,"7","1");
 
 insert into Review(rating, content,city,state,country)
-values ("4","Orange chicken is the best","ann arbor","michigan","united state");
+values ("4","Orange chicken is the best","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (4,"8","2");
 
 insert into Review(rating, content,city,state,country)
-values ("5","Thanks to General Tsao","ann arbor","michigan","united state");
+values ("5","Thanks to General Tsao","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (4,"9","3");
@@ -202,19 +202,19 @@ insert into ReviewContain(restid,revid,sequencenum)
 values (4,"12","6");
 
 insert into Review(rating, content,city,state,country)
-values ("1","The waiter does not speak english","ann arbor","michigan","united state");
+values ("1","The waiter does not speak english","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (5,"13","1");
 
 insert into Review(rating, content,city,state,country)
-values ("1","*** is this food. They eat everything","ann arbor","michigan","united state");
+values ("1","*** is this food. They eat everything","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (5,"14","2");
 
 insert into Review(rating, content,city,state,country)
-values ("1","LOL they just serve me chicken feet","ann arbor","michigan","united state");
+values ("1","LOL they just serve me chicken feet","ann arbor","michigan","united states");
 
 insert into ReviewContain(restid,revid,sequencenum)
 values (5,"15","3");
@@ -283,3 +283,22 @@ values (14, 21.129547, -86.817013);
 
 insert into RestGeo(restid, latitude, longitude)
 values (15, 21.134875,-86.753889);
+
+
+insert into CountryRating(restid, rating, country)
+values(1, 3, 'united states');
+
+insert into CountryRating(restid, rating, country)
+values(2, 2.5, 'united states');
+
+insert into CountryRating(restid, rating, country)
+values(4, 4.5, 'united states');
+
+insert into CountryRating(restid, rating, country)
+values(4, 1.5, 'china');
+
+insert into CountryRating(restid, rating, country)
+values(5, 1, 'united states');
+
+insert into CountryRating(restid, rating, country)
+values(5, 5, 'china');

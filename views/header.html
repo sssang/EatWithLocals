@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block header %}
 <div id="head_banner">
-    <div class="container">
+  <a href="{{ url_for('index')}}"
+     style="position: absolute; left: 0; margin-left: 40px; color: rgba(128, 128, 128, 0.52); font-size:80px;">
+    <span class="glyphicon glyphicon-menu-left" aria-hidden="true" ></span>
+  </a>
+  <div class="container">
       <div id="search_box">
         <form action="{{ url_for('index') }}" method="POST" id="search">
           <div class="input-group input-group-md">

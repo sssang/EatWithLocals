@@ -8,9 +8,19 @@ class SearchAPI(MethodView):
         keyword = request.args.get('keyword')
         if not keyword:
             return redirect(url_for('index'))
-            
+
         kw = keyword.lower().split(',')
-        rests = Rest.get_rests_by_kw(kw[0])
+
+        temp = {}
+        rests = Rest.get_rests_by_kw(kw[0].lstrip(), kw[len(kw)-1].lstrip(), None)
+        all_rests = Rest.get_all_by_kw(kw[0].lstrip())
+
+        for r in rests:
+            temp[r.restid] = r
+        for a in all_rests:
+            if a.restid not in temp:
+                rests.append(a)
+
         return render_template('search_result.html', rests=rests, keyword=keyword, sort_by="rating")
 
     def post(self):
@@ -31,17 +41,29 @@ class SearchAPI(MethodView):
 
             kw = keyword.lower().split(',')
             if sort_by == 'rating':
-                if country:
-                    rests = Rest.get_rests_by_rating(kw[0], country)
-                else:
-                    rests = Rest.get_rests_by_kw(kw[0])
+                temp = {}
+                rests = Rest.get_rests_by_kw(kw[0].lstrip(), kw[len(kw)-1].lstrip(), country)
+                all_rests = Rest.get_all_by_kw(kw[0].lstrip())
+                for r in rests:
+                    temp[r.restid] = r
+                for a in all_rests:
+                    if a.restid not in temp:
+                        rests.append(a)
             else:
                 if current_lat and current_long:
-                    rests = Rest.get_rests_by_distance(kw[0], current_lat, current_long)
+                    rests = Rest.get_rests_by_distance(kw[0].lstrip(), current_lat, current_long)
                 else:
-                    rests = Rest.get_rests_by_kw(kw[0])
+                    temp = {}
+                    rests = Rest.get_rests_by_kw(kw[0].lstrip(), kw[len(kw)-1].lstrip(), None)
+                    all_rests = Rest.get_all_by_kw(kw[0].lstrip())
 
-            return render_template('search_result.html', rests=rests, keyword=keyword, sort_by=sort_by,
+                    for r in rests:
+                        temp[r.restid] = r
+                    for a in all_rests:
+                        if a.restid not in temp:
+                            rests.append(a)
+
+            return render_template('search_result.html', rests=rests, keyword=keyword, sort_by=sort_by, country=country,
                                    price_range=price_range[0]+','+price_range[1])
         else:
             abort(404)

@@ -17,17 +17,46 @@ class Rest(object):
         self.lastupdated=lastupdated
 
     @classmethod
-    def get_rests_by_kw(cls, keyword):
+    def get_all_by_kw(cls, keyword):
         connection = mysql.connect()
         cursor = connection.cursor()
 
-        sql = "select * from Rest where city=%s or state=%s or country=%s order by rating desc"
-        cursor.execute(sql, (keyword,keyword,keyword))
+        sql = "select * from Rest where Rest.city='{0}' or Rest.state='{0}' or Rest.country='{0}' order by rating desc".format(keyword)
+        cursor.execute(sql)
         data = cursor.fetchall()
 
         cursor.close()
         connection.close()
+
         return [cls(*t) for t in data] if data else []
+
+    @classmethod
+    def get_rests_by_kw(cls, keyword, kw_country, country):
+        connection = mysql.connect()
+        cursor = connection.cursor()
+
+        print keyword
+        print kw_country
+        print country
+
+        if not country:
+            country = kw_country
+
+        sql = "select * from CountryRating where country=%s"
+        cursor.execute(sql, (country,))
+        data = cursor.fetchall()
+
+        if not data:
+            sql = "select * from Rest where Rest.city='{0}' or Rest.state='{0}' or Rest.country='{0}' order by rating desc".format(keyword)
+        else:
+            sql = "select * from Rest inner join CountryRating on Rest.restid=CountryRating.restid where (Rest.city='{0}' or Rest.state='{0}' or Rest.country='{0}') and CountryRating.country='{1}' order by CountryRating.rating desc".format(keyword, country)
+
+        cursor.execute(sql)
+        data = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+        return [cls(*t[:12]) for t in data] if data else []
 
     @classmethod
     def get_rests_by_distance(cls, keyword, latitude, longitude):
