@@ -16,9 +16,8 @@ CREATE TABLE Rest
 
 CREATE TABLE Photo
 (
-        picid VARCHAR(40) unsigned AUTO_INCREMENT NOT NULL,
+        picid integer unsigned AUTO_INCREMENT NOT NULL,
         url VARCHAR(225) NOT NULL,
-        owner integer unsigned null,
         created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY(picid)
 
@@ -49,17 +48,18 @@ create table Menu
 
 create table Course
 (
-        courseid integer usigned auto_increment not null,
+        courseid integer unsigned auto_increment not null,
         menuid integer unsigned not null,
         course_name varchar(255) not null,
         course_content varchar(255) not null,
+        primary key(courseid),
         constraint c_menuid_frk foreign key (menuid) references Menu (menuid) on delete cascade on update cascade
 );
 
 CREATE TABLE PhotoContain
 (
         restid INTEGER unsigned NOT NULL,
-        picid VARCHAR(40) NOT NULL,
+        picid integer unsigned NOT NULL,
         caption VARCHAR(225) DEFAULT NULL,
         sequencenum INTEGER unsigned NOT NULL,
         CONSTRAINT pc_restid_frk FOREIGN KEY (restid) REFERENCES Rest(restid) ON DELETE CASCADE ON UPDATE CASCADE,
