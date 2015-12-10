@@ -10,6 +10,7 @@ class RestAPI(MethodView):
         picobject = Rest.get_rest_object(restid)
         pics = Photo.get_rest_pics(restid)
         reviews = Review.get_rest_reviews(restid)
+        print(reviews[0].rating)
         return render_template('rest_index.html', pics=pics, reviews=reviews, picobject=picobject)
 
     def post(self):
