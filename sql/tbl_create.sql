@@ -4,6 +4,7 @@ CREATE TABLE Rest
         restname VARCHAR(50) DEFAULT NULL,
         picurl VARCHAR(255) NOT NULL,
         resttag VARCHAR(225) NOT NULL,
+        description VARCHAR(225) DEFAULT NULL,
         rating double DEFAULT 0,
         address varchar(225) not null,
         city varchar(225) not null,

@@ -1,12 +1,13 @@
 from models import mysql
 
 class Rest(object):
-    def __init__(self, restid=None, restname=None, picurl=None, resttag=None, rating=None,
+    def __init__(self, restid=None, restname=None, picurl=None, resttag=None,description=None, rating=None,
                  address=None, city=None,state=None,country=None, created=None, lastupdated=None):
         self.restid=restid
         self.restname=restname
         self.picurl=picurl
         self.resttag=resttag
+        self.description=description
         self.rating=rating
         self.address=address
         self.city=city
@@ -20,7 +21,7 @@ class Rest(object):
         connection = mysql.connect()
         cursor = connection.cursor()
 
-        sql = "select * from Rest where place=%s"
+        sql = "select * from Rest where city=%s"
         cursor.execute(sql, (keyword,))
         data = cursor.fetchall()
 
