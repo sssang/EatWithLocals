@@ -7,10 +7,10 @@ from models.restuarant import Rest
 class RestAPI(MethodView):
     def get(self):
         restid = request.args.get('id')
-        picobject = Rest.get_rest_object(restid)
+        rests = Rest.get_rest_object(restid)
         pics = Photo.get_rest_pics(restid)
         reviews = Review.get_rest_reviews(restid)
-        return render_template('rest_index.html', pics=pics, reviews=reviews, picobject=picobject)
+        return render_template('rest_index.html', pics=pics, reviews=reviews, rests=rests)
 
     def post(self):
         op = request.form.get('op')

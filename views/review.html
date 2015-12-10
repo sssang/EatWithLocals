@@ -1,0 +1,139 @@
+{% extends "header.html" %}
+{% block content %}
+<div id="sub_banner">
+  <div class="rest_info">
+    <div id="criteria">
+      <div class="container">
+        <div class="col-md-7" style="position:absolute; left:0; top:0">
+          <div style="margin-bottom: 5px;">
+            <h2 style="margin-bottom: 5px;color:#596578; font-size:60px;">{{rests[0].restname}}</h2>
+            <span style="font-size: 14px;color: grey;font-weight: 300; margin-left:2px;">{{rests[0].address}}
+            </span>
+          </div>
+          <div>
+            {% if (((rests[0].rating*10)|int)/10)|int == rests[0].rating %}
+              {% for i in range(0, (rests[0].rating|int)) %}
+                <span>
+                  <img src="../static/pictures/full-star.png" class="rest_star"
+                       alt="rating: {{rests[0].rating}}">
+                </span>
+              {% endfor %}
+            {% else %}
+              {% for i in range(0, ((rests[0].rating-0.5)|int)) %}
+                <span>
+                  <img src="../static/pictures/full-star.png" class="rest_star"
+                       alt="rating: {{rests[0].rating}}">
+                </span>
+              {% endfor %}
+              <span>
+                <img src="../static/pictures/half-star.png" class="rest_star"
+                     alt="rating: {{rests[0].rating}}">
+              </span>
+              {% endif %}
+          </div>
+          <p>{{rests[0].description}}</p>
+          <p style="font-size: 15px;color:#72BBF4">Want to learn more about <a>Menu</a>?</p>
+        </div>
+        <div id="map_canvas" style="position:absolute; right:0; width:400px; height:250px" class="col-md-6">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-bottom:50px;">
+  <div style="margin-bottom: 15px;color:#596578; font-size:30px;margin-top:20px;text-shadow: 1px 1px 1px rgba(89, 101, 120, 0.45);">
+    Create New Review
+  </div>
+  <div style="background: rgba(2,29,73,0.09); height: 600px; border-radius:10px;">
+    <div style="margin-left:80px; margin-right:80px; padding-top:30px;">
+      <p class="rev_rating" style="margin-left: 40px; opacity: 0.7;">
+        <input type="radio" id="star5" name="rating" value="5" onclick="get_rating(value)">
+        <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4.5" onclick="get_rating(value)">
+        <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" onclick="get_rating(value)">
+        <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3.5" onclick="get_rating(value)">
+        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" onclick="get_rating(value)">
+        <label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2.5" onclick="get_rating(value)">
+        <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" onclick="get_rating(value)">
+        <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1.5" onclick="get_rating(value)">
+        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" onclick="get_rating(value)">
+        <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="0.5" onclick="get_rating(value)">
+        <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+      </p>
+      <p style="margin-top: 25px;margin-left:365px;font-size: 20px;color: #8094B3;">
+        Please rate this restaurant.
+      </p>
+      <hr style="position: absolute;border-top:1px solid rgba(128, 148, 179, 0.33); width: 84%; margin-top: 5px">
+      <div style="opacity: 0.8; margin-top: 50px;">
+       <textarea form="review_form" class="form-control" rows="18"
+                 placeholder='Here you can write down your review on this restaurant. Click "Add Menu" button to add your own menu.'
+                 style="padding: 15px 15px 15px 15px;"></textarea>
+      </div>
+    </div>
+  </div>
+  <form id="review_form" action="{{ url_for('review') }}" method="POST">
+    <input type="hidden" id="rating_value" name="rating" value="0">
+    <button type="submit" class="btn btn-primary" style="position:absolute; right:0; margin-right: 20px; margin-top: 20px; width:120px; opacity:0.8">Submit</button>
+  </form>
+</div>
+
+
+<script type="text/javascript">
+  var geocoder;
+  var map;
+  var address ="{{rests[0].address}}";
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 16,
+      center: latlng,
+    mapTypeControl: true,
+    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+    navigationControl: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+          map.setCenter(results[0].geometry.location);
+
+            var infowindow = new google.maps.InfoWindow(
+                { content: '<b>'+address+'</b>',
+                  size: new google.maps.Size(150,50)
+                });
+
+            var marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: map,
+                title:address
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
+
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+
+ function get_rating(rating){
+   console.log(rating);
+   $("#rating_value").val(rating);
+ }
+</script>
+{% endblock %}
