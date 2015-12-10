@@ -4,15 +4,40 @@
   <div class="container">
     <div id="criteria">
       <p id="sort_by"> Sort By:
-        <span>
-          <img src="static/pictures/Rating.png" id="rating">
+        <span class="no_link_dec">
+          <a href="#">
+            <img {% if sort_by == "rating" %}src="static/pictures/Rating_s.png"
+                 {% else %}src="static/pictures/Rating_u.png"
+                 {% endif %}
+            id="rating"  onclick="change_sort('rating')">
+          </a>
         </span>
-        <span>
-          <img src="static/pictures/Distance.png" id="distance">
+        <span class="no_link_dec">
+          <a href="#">
+            <img {% if sort_by == "rating" %}src="static/pictures/Distance_u.png"
+                 {% else %}src="static/pictures/Distance_s.png"
+                 {% endif %}
+            id="distance" onclick="change_sort('distance')">
+          </a>
         </span>
       </p>
-      <p id="average_price"> Average Price:
+      <p id="average_price">
+        Average Price:
       </p>
+      <form id="avgp_form" action="POST">
+        <div data-role="rangeslider" id="range_div">
+          <b class="range_label">$0&nbsp&nbsp&nbsp&nbsp</b>
+          <input id="avgp_price" name="p_range" type="text" data-slider-id="ap" data-slider-min="0"
+                 class="span2" data-slider-max="100" data-slider-step="2" data-slider-value="[20, 80]"
+                 value="20,80">
+          <b class="range_label">&nbsp&nbsp&nbsp&nbsp$100</b>
+        </div>
+
+        <input id="sort_method" type="hidden" name="sort_by" value="{{sort_by}}">
+        <input type="hidden" name="op" value="update">
+        <input type="hidden" name="keyword" value="{{keyword}}">
+        <button type="submit" class="btn btn-default btn-md" id="update_btn">Update!</button>
+      </form>
     </div>
   </div>
 </div>
@@ -47,4 +72,21 @@
   {% endfor %}
   </div>
 </div>
+
+<script>
+ $("#avgp_price").slider({});
+
+ function change_sort(sort_type){
+   console.log(sort_type);
+   $("#sort_method").val(sort_type);
+   if(sort_type === 'rating'){
+     $("#rating").attr("src", "static/pictures/Rating_s.png");
+     $("#distance").attr("src", "static/pictures/Distance_u.png");
+   }
+   else{
+     $("#rating").attr("src", "static/pictures/Rating_u.png");
+     $("#distance").attr("src", "static/pictures/Distance_s.png");
+   }
+ }
+</script>
 {% endblock %}
