@@ -1,49 +1,49 @@
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Angelo's", "static/pictures/angelos.jpg", "Breakfast & Brunch","Family-run eatery serves diner-style breakfasts & light lunch, plus bread baked daily in-house.", "5", "1100 Catherine St, Ann Arbor, MI 48104", "ann arbor", "michigan", "united states");
+insert into Rest (restname, price, picurl, resttag,description, rating, address, city,state,country,url)
+values ("Angelo's","15", "static/pictures/angelos.jpg", "Breakfast & Brunch","Family-run eatery serves diner-style breakfasts & light lunch, plus bread baked daily in-house.", "5", "1100 Catherine St, Ann Arbor, MI 48104", "ann arbor", "michigan", "united states",'http://www.angelosa2.com/specials');
 
-insert into Rest (restname, picurl, resttag,description, rating, address,  city,state,country)
-values ("Zingerman's", "static/pictures/zingerman.jpg", "Delis, Breakfast & Brunch","Zingerman's, or Zingerman's Community of Businesses, is a gourmet food business group headquartered in Ann Arbor, Michigan, USA. The original business and current flagship operation is Zingerman's Delicatessen. ", "4.5", "422 Detroit St, Ann Arbor, MI 48104", "ann arbor", "michigan", "united states");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Zingerman's","20", "static/pictures/zingerman.jpg", "Delis, Breakfast & Brunch","Zingerman's, or Zingerman's Community of Businesses, is a gourmet food business group headquartered in Ann Arbor, Michigan, USA. The original business and current flagship operation is Zingerman's Delicatessen. ", "4.5", "422 Detroit St, Ann Arbor, MI 48104", "ann arbor", "michigan", "united states",'http://www.zingermansdeli.com/menus/');
 
-insert into Rest (restname, picurl, resttag, description, rating, address, city,state,country)
-values ("Sava's","http://bigpanlittlepan.com/wp-content/uploads/2015/05/45-percent-sava-header-logo.png","Local restaurant","A local sanctuary where community, culture, and craft meet for a truly authentic culinary experience.","4.5","216 South State Street, Ann Arbor, MI 88104","ann arbor", "michigan", "united states");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Sava's","14","http://bigpanlittlepan.com/wp-content/uploads/2015/05/45-percent-sava-header-logo.png","Local restaurant","A local sanctuary where community, culture, and craft meet for a truly authentic culinary experience.","4.5","216 South State Street, Ann Arbor, MI 88104","ann arbor", "michigan", "united states",'http://savasrestaurant.com/breakfast_lunch_menu-2/');
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Lucky Kitchen", "http://www.luckykitchen.net/images/index2_03.gif","authentic chinese food","Lucky Kitchen Chinese Restaurant, Ann Arbor, MI - LKfit Meals, takeout, dine-in and delivery from two locations near U of M. Authentic Chinese off-premise catering from appetizers to full meals is the healthy, economical way to feed any group.","3","611 E University Ave, Ann Arbor, MI 48104","ann arbor","michigan","united states");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Lucky Kitchen","5", "http://www.luckykitchen.net/images/index2_03.gif","authentic chinese food","Lucky Kitchen Chinese Restaurant, Ann Arbor, MI - LKfit Meals, takeout, dine-in and delivery from two locations near U of M. Authentic Chinese off-premise catering from appetizers to full meals is the healthy, economical way to feed any group.","3","611 E University Ave, Ann Arbor, MI 48104","ann arbor","michigan","united states",'http://www.luckykitchen.net/menu.html');
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Evergreen","http://nebula.wsimg.com/01789fb1d98ed85afb8dae5da57d1648?AccessKeyId=49806A5A056E8BC7E822&disposition=0&alloworigin=1","Authentic Chinese Food","Since 1992, we have consistently served Ann Arbor with delicious, gourmet Chinese cuisine.  Specializing in Mandarin, Sizchuan, Hunan, Shanghai and Taiwan styles of cooking, Evergreen promises only the most authentic flavors with the freshest ingredients, and always at a affordable price.","5","2771 Plymouth Rd, Ann Arbor, MI 48105","ann arbor","michigan","united states");
-
-
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("The Upper West","http://www.theupperwest.com/wp-content/uploads/2014/05/250x54b.png","American Cuisine","With a constantly changing menu, Upper West boasts of Chef Nick Shipp’s eclectic individualistic dishes that tickle the palate with unique ingredients from all around the world. The restaurant reflects an uncompromising approach to modern American cuisine that knows no bounds coupled with exceptional customer service.","4.2","3321 Pico Blvd, Santa Monica, CA, 90404","santa monica","california","united states");
-
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Cha Cha Chicken","http://chachachicken.com/chachachicken7.jpg","caribbean cuisine","Caribbean cuisine with Latin fusion","2.0","1906 Ocean Ave,Santa Monica,CA, 90405","santa monica","california","united states");
-
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Meisse","http://melisse.com/wp-content/themes/melisse-theme/images/logo-melisse.png","Michilin star restaurant","Situated in Santa Monica, Mélisse inspires all of the senses with its chic ambiance, superb, contemporary French cuisine and gracious service. The Olivia and Augustin Rooms offer privacy for intimate gatherings or business entertaining","5","1104 WILSHIRE BLVD, SANTA MONICA, CA 90401","santa monica","california","united states");
-
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("The IVY","http://www.theivyrestaurants.com/images/slider/the-ivy/1.jpg","Perfect Brunch Place","","3.5","1535 Ocean Ave, Santa Monica, CA 90401","santa monica","california","united states");
-
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Zabies","http://www.zabies.com/images/menu-breakfast.png","Breakfast cafe","At Zabie’s Neighborhood Cafe we hand pick our ingredients almost daily to ensure we deliver high quality, fresh and delicious meals to our guests. We are a gourmet café offering a variety of healthy breakfast and lunch options as well as staple comfort foods.","3.0","3003 Ocean Park Blvd. Santa Monica, CA 90405","santa monica","california","united states");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Evergreen","11","http://nebula.wsimg.com/01789fb1d98ed85afb8dae5da57d1648?AccessKeyId=49806A5A056E8BC7E822&disposition=0&alloworigin=1","Authentic Chinese Food","Since 1992, we have consistently served Ann Arbor with delicious, gourmet Chinese cuisine.  Specializing in Mandarin, Sizchuan, Hunan, Shanghai and Taiwan styles of cooking, Evergreen promises only the most authentic flavors with the freshest ingredients, and always at a affordable price.","5","2771 Plymouth Rd, Ann Arbor, MI 48105","ann arbor","michigan","united states",'http://www.evergreen-restaurant.com/menu.html');
 
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Nebbiolo Ristorante","https://www.visualitineraries.com/img/locations/20002.jpg","secrets the Vine","","4","Blvd. Kukulcan Km. 14.5 Lote 38, Zona Hotelera, Cancun 77500, Mexico","cancun","","mexico");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("The Upper West","16","http://www.theupperwest.com/wp-content/uploads/2014/05/250x54b.png","American Cuisine","With a constantly changing menu, Upper West boasts of Chef Nick Shipp’s eclectic individualistic dishes that tickle the palate with unique ingredients from all around the world. The restaurant reflects an uncompromising approach to modern American cuisine that knows no bounds coupled with exceptional customer service.","4.2","3321 Pico Blvd, Santa Monica, CA, 90404","santa monica","california","united states",'http://www.theupperwest.com/menus/');
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("The White Box", "http://media-cdn.tripadvisor.com/media/photo-s/05/77/2f/c7/the-white-box.jpg", "High-end Dining","Located in the Grand Oasis Cancun, The White Box is a gastrobar created by Chef Rafael Zafra; who, among his many accomplishments, worked alongside Chef Ferran Adria as part of the remarkable team behind five times best restaurant in the world, El Bulli. ", "4.5", "Blvd. Kukulcán Km 16.5, Lote 45, 46 y 47, Zona Hotelera, 77500 Cancún, Mexico", "cancun","","mexico");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Cha Cha Chicken","5","http://chachachicken.com/chachachicken7.jpg","caribbean cuisine","Caribbean cuisine with Latin fusion","2.0","1906 Ocean Ave,Santa Monica,CA, 90405","santa monica","california","united states",'chachachicken.com/menu.html');
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("Tempo by Martin Berasategui", "http://tempobymartinberasategui.com/wp-content/uploads/2014/05/paradisuscancuntempobco.png", "Michilin style","Tempo by Martin Berasategui is sublime icon of Paradisus Cancun culinary experiences. It is exclusive elegance in an avantgarde. Is carried away by the traditional flavors of the cuisine in a modern concept.", "5", "Blvd. Kukulcan km 16.5 Cancún, México", "cancun","","mexico");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Meisse","18","http://melisse.com/wp-content/themes/melisse-theme/images/logo-melisse.png","Michilin star restaurant","Situated in Santa Monica, Mélisse inspires all of the senses with its chic ambiance, superb, contemporary French cuisine and gracious service. The Olivia and Augustin Rooms offer privacy for intimate gatherings or business entertaining","5","1104 WILSHIRE BLVD, SANTA MONICA, CA 90401","santa monica","california","united states",'http://melisse.com/menu');
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("MB","http://www.junkfoodguy.com/wp-content/uploads/2015/06/liveaqua-mb-05.jpg","high-end dining","The MB Restaurant is the only eating establishment at the Live Aqua that has a dress code – “Resort Chic” - See more at: http://www.junkfoodguy.com/2015/06/11/liveaquamb/#sthash.JcIIuFqw.dpuf","3.4","Boulevard Kukulcan Km. 12.5 at Live Aqua Cancun Hotel, Cancun 77500, Mexico","cancun","","mexico");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("The IVY","10","http://www.theivyrestaurants.com/images/slider/the-ivy/1.jpg","Perfect Brunch Place","","3.5","1535 Ocean Ave, Santa Monica, CA 90401","santa monica","california","united states",'http://www.theivyrestaurants.com/ivy-at-the-shore/');
 
-insert into Rest (restname, picurl, resttag,description, rating, address, city,state,country)
-values ("STEAKHOUSE PERUVIAN CUISINE","http://lima1205.com.mx/wp-content/uploads/2015/06/LimaColor87x99.png","ocean-view restaurant","With a spectacular view of the Nichupte Lagoon and located in the heart of Cancun’s famed hotel zone, Lima 12 05 Peruvian Cuisine and Steakhouse is the first 100% Peruvian restaurant in all of Southern Mexico.","3.5","Boulevard Kukulkan Km 12. 7, Cancun 77500, Mexico","cancun","","mexico");
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Zabies","30","http://www.zabies.com/images/menu-breakfast.png","Breakfast cafe","At Zabie’s Neighborhood Cafe we hand pick our ingredients almost daily to ensure we deliver high quality, fresh and delicious meals to our guests. We are a gourmet café offering a variety of healthy breakfast and lunch options as well as staple comfort foods.","3.0","3003 Ocean Park Blvd. Santa Monica, CA 90405","santa monica","california","united states",'http://www.zabies.com/menu.html');
+
+
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Nebbiolo Ristorante","40","https://www.visualitineraries.com/img/locations/20002.jpg","secrets the Vine","","4","Blvd. Kukulcan Km. 14.5 Lote 38, Zona Hotelera, Cancun 77500, Mexico","cancun","","mexico",'http://secretsthevine.m77950.com/CMS/MobiRenderContent.aspx?contentGroupID=31227');
+
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("The White Box", "35","http://media-cdn.tripadvisor.com/media/photo-s/05/77/2f/c7/the-white-box.jpg", "High-end Dining","Located in the Grand Oasis Cancun, The White Box is a gastrobar created by Chef Rafael Zafra; who, among his many accomplishments, worked alongside Chef Ferran Adria as part of the remarkable team behind five times best restaurant in the world, El Bulli. ", "4.5", "Blvd. Kukulcán Km 16.5, Lote 45, 46 y 47, Zona Hotelera, 77500 Cancún, Mexico", "cancun","","mexico",'http://oasishoteles.net/blog/white-box-full-of-surprises/');
+
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("Tempo by Martin Berasategui","50", "http://tempobymartinberasategui.com/wp-content/uploads/2014/05/paradisuscancuntempobco.png", "Michilin style","Tempo by Martin Berasategui is sublime icon of Paradisus Cancun culinary experiences. It is exclusive elegance in an avantgarde. Is carried away by the traditional flavors of the cuisine in a modern concept.", "5", "Blvd. Kukulcan km 16.5 Cancún, México", "cancun","","mexico",'http://tempobymartinberasategui.com/menu/');
+
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("MB","70","http://www.junkfoodguy.com/wp-content/uploads/2015/06/liveaqua-mb-05.jpg","high-end dining","The MB Restaurant is the only eating establishment at the Live Aqua that has a dress code – “Resort Chic” - See more at: http://www.junkfoodguy.com/2015/06/11/liveaquamb/#sthash.JcIIuFqw.dpuf","3.4","Boulevard Kukulcan Km. 12.5 at Live Aqua Cancun Hotel, Cancun 77500, Mexico","cancun","","mexico",'http://www.tripadvisor.com/Restaurant_Review-g150807-d2056999-Reviews-MB-Cancun_Yucatan_Peninsula.html');
+
+insert into Rest (restname, price, picurl, resttag,description, rating, address,  city,state,country,url)
+values ("STEAKHOUSE PERUVIAN CUISINE","100","http://lima1205.com.mx/wp-content/uploads/2015/06/LimaColor87x99.png","ocean-view restaurant","With a spectacular view of the Nichupte Lagoon and located in the heart of Cancun’s famed hotel zone, Lima 12 05 Peruvian Cuisine and Steakhouse is the first 100% Peruvian restaurant in all of Southern Mexico.","3.5","Boulevard Kukulkan Km 12. 7, Cancun 77500, Mexico","cancun","","mexico",'http://www.tripadvisor.com/Restaurant_Review-g150807-d5522527-Reviews-Lima_12_05_Peruvian_Cuisine_Steak_House-Cancun_Yucatan_Peninsula.html');
 
 
 insert into Photo(picid,url)

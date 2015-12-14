@@ -1,8 +1,8 @@
 from models import mysql
 
 class Rest(object):
-    def __init__(self, restid=None, restname=None, picurl=None, resttag=None,description=None, rating=None,
-                 address=None, city=None,state=None,country=None, created=None, lastupdated=None):
+    def __init__(self, restid=None, price=None,restname=None, picurl=None, resttag=None,description=None, rating=None,
+                 address=None, city=None,state=None,country=None, url=None,created=None, lastupdated=None):
         self.restid=restid
         self.restname=restname
         self.picurl=picurl
@@ -13,8 +13,10 @@ class Rest(object):
         self.city=city
         self.state=state
         self.country=country
+        self.url=url
         self.created=created
         self.lastupdated=lastupdated
+        self.price=price
 
     @classmethod
     def get_all_by_kw(cls, keyword):
@@ -100,3 +102,4 @@ class Rest(object):
         cursor.close()
         connection.close()
         return [cls(*t) for t in data] if data else []
+
