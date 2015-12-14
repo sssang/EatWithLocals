@@ -21,7 +21,7 @@ class SearchAPI(MethodView):
             if a.restid not in temp:
                 rests.append(a)
 
-        return render_template('search_result.html', rests=rests, keyword=keyword, sort_by="rating")
+        return render_template('search_result.html', rests=rests, keyword=keyword, sort_by="rating",price_range="[20,80]",lower=20,higher=80)
 
     def post(self):
         op = request.form.get('op')
@@ -35,7 +35,6 @@ class SearchAPI(MethodView):
             country = request.form.get('country')
             current_lat = request.form.get('current_lat')
             current_long = request.form.get('current_long')
-
             if not keyword:
                 return redirect(url_for('index'))
 
@@ -49,6 +48,13 @@ class SearchAPI(MethodView):
                 for a in all_rests:
                     if a.restid not in temp:
                         rests.append(a)
+                print "range:", price_range[0]
+                print "range:", price_range[1]
+                for w in rests:
+                    if w.price < int(price_range[0]) or w.price > int(price_range[1]):
+                        rests.remove(w)
+
+
             else:
                 if current_lat and current_long:
                     rests = Rest.get_rests_by_distance(kw[0].lstrip(), current_lat, current_long)
@@ -62,8 +68,10 @@ class SearchAPI(MethodView):
                     for a in all_rests:
                         if a.restid not in temp:
                             rests.append(a)
-
+                    for w in rests:
+                        if w.price < int(price_range[0]) or w.price > int(price_range[1]):
+                            rests.remove(w)
             return render_template('search_result.html', rests=rests, keyword=keyword, sort_by=sort_by, country=country,
-                                   price_range=price_range[0]+','+price_range[1])
+                                   price_range='['+price_range[0]+','+ price_range[1]+']',lower=int(price_range[0]),higher=int(price_range[1]))
         else:
             abort(404)

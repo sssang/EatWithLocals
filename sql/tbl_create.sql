@@ -1,6 +1,7 @@
 CREATE TABLE Rest
 (
         restid INTEGER unsigned AUTO_INCREMENT NOT NULL,
+        price INTEGER unsigned NOT NULL,
         restname VARCHAR(50) DEFAULT NULL,
         picurl VARCHAR(255) NOT NULL,
         resttag VARCHAR(225) NOT NULL,
@@ -10,6 +11,7 @@ CREATE TABLE Rest
         city varchar(225) not null,
         state varchar(255) not null,
         country varchar(255) not null,
+        url VARCHAR(225) NOT NULL,
         created TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
         lastupdated TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY(restid)
@@ -90,4 +92,5 @@ create table RestGeo
         latitude double not null,
         longitude double not null,
         constraint rg_restid_frk foreign key (restid) references Rest(restid)
-)
+);
+

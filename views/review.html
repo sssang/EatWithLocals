@@ -76,6 +76,29 @@
       <div style="overflow: hidden; padding-right: .5em;">
         <input type="text" style="width: 20%;" name="country_input" oninput="change_country_value(value)">
       </div>​
+      <div class="container">
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add customized Menu</button>
+
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Add Customerized Menu</h4>
+               </div>
+               <div class="modal-body">
+                   <p>course-name        course-content</p>
+                   <span id="fooBar" style="margin-bottom:100px;">&nbsp;</span>
+                    <INPUT type="button" value="Add" onclick="add()"/>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+          </div>
+         </div>
+        </div>
+
       <hr style="position: absolute;border-top:1px solid rgba(128, 148, 179, 0.33); width: 84%; margin-top: 5px">
       <div style="opacity: 0.8; margin-top: 50px;">
        <textarea form="review_form" class="form-control" rows="18" name='review_content'
@@ -147,5 +170,32 @@
    console.log(value);
    $("#country_value").val(value);
  }
+
+ function add() {
+    //Create an input type dynamically.
+    var element = document.createElement("input");
+    var element2 = document.createElement("input");
+    var element3 = document.createElement("br");
+    var element4 = document.createElement("br");
+    //Assign different attributes to the element.
+    element.setAttribute("type", "text");
+    element2.setAttribute("type","text");
+
+
+
+
+    var foo = document.getElementById("fooBar");
+
+    //Append the element in page (in span).
+    foo.appendChild(element);
+    foo.appendChild(element2);
+    foo.appendChild(element3);
+    foo.appendChild(element4);
+
+
+
+}
 </script>
 {% endblock %}
+
+
