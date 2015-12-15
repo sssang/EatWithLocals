@@ -3,6 +3,8 @@ from flask import render_template, redirect, url_for, request
 
 from models.restuarant import Rest
 from models.review import Review
+from models.course import Course
+from models.menu import Menu
 
 class ReviewAPI(MethodView):
     def get(self):
@@ -22,5 +24,12 @@ class ReviewAPI(MethodView):
             content = request.form.get('review_content')
             country = request.form.get('country')
 
-            Review.insert(restid, rating, content, country)
+            revid = Review.insert(restid, float(rating), content, country)
+            menuid = Menu.insert_menu(int(restid), int(revid))
+
+            for i in request.form:
+                if i.startswith('menu'):
+                    course = request.form.get(i).split(':')
+                    Course.insert_course(menuid, course[0], course[1])
+
             return redirect(url_for('rest_index')+'?id='+restid)

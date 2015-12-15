@@ -41,13 +41,13 @@
   </div>
 </div>
 
-<div class="container" style="margin-bottom:50px;">
+<div class="container" style="margin-bottom:50px; padding-right: 0px">
   <div style="margin-bottom: 15px;color:#596578; font-size:30px;margin-top:20px;text-shadow: 1px 1px 1px rgba(89, 101, 120, 0.45);">
     Create New Review
   </div>
-  <div style="background: rgba(2,29,73,0.09); height: 600px; border-radius:10px;">
+  <div style="background: rgba(2,29,73,0.09); height: 650px; border-radius:10px;">
     <div style="margin-left:80px; margin-right:80px; padding-top:30px;">
-      <p class="rev_rating" style="margin-left: 40px; opacity: 0.7;">
+      <p class="rev_rating" style="margin-left: 40px; opacity: 0.7;margin-top:25px;">
         <input type="radio" id="star5" name="rating" value="5" onclick="get_rating(value)">
         <label class = "full" for="star5" title="Awesome - 5 stars"></label>
         <input type="radio" id="star4half" name="rating" value="4.5" onclick="get_rating(value)">
@@ -72,38 +72,16 @@
       <p style="margin-top: 25px;margin-left:365px;font-size: 20px;color: #8094B3;">
         Please rate this restaurant.
       </p>
-      <p style="float:left; font-size: 20px;color: #8094B3;margin-left:90px">Country you are from: </p>
-      <div style="overflow: hidden; padding-right: .5em;">
+      <p style="float:left; font-size: 20px;color: #8094B3;margin-left:90px; margin-right: 20px">Country you are from: </p>
+      <div>
         <input type="text" style="width: 20%;" name="country_input" oninput="change_country_value(value)">
       </div>​
-      <div class="container">
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add customized Menu</button>
-
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Add Customerized Menu</h4>
-               </div>
-               <div class="modal-body">
-                   <p>course-name        course-content</p>
-                   <span id="fooBar" style="margin-bottom:100px;">&nbsp;</span>
-                    <INPUT type="button" value="Add" onclick="add()"/>
-               </div>
-               <div class="modal-footer">
-                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               </div>
-            </div>
-          </div>
-         </div>
-        </div>
 
       <hr style="position: absolute;border-top:1px solid rgba(128, 148, 179, 0.33); width: 84%; margin-top: 5px">
       <div style="opacity: 0.8; margin-top: 50px;">
        <textarea form="review_form" class="form-control" rows="18" name='review_content'
                  placeholder='Here you can write down your review on this restaurant. Click "Add Menu" button to add your own menu.'
-                 style="padding: 15px 15px 15px 15px;"></textarea>
+                 style="padding: 15px;"></textarea>
       </div>
     </div>
   </div>
@@ -112,7 +90,54 @@
     <input type="hidden" name="op" value="review">
     <input type="hidden" name="restid" value="{{rests[0].restid}}">
     <input type="hidden" name="country" id="country_value">
-    <button type="submit" class="btn btn-primary" style="position:absolute; right:0; margin-right: 20px; margin-top: 20px; width:120px; opacity:0.8">Submit</button>
+    <div class="btn-toolbar" role="toolbar" style="margin-top: 20px; position:absolute; right:0;">
+      <a class="btn btn-primary" href="{{url_for('rest_index')}}?id={{rests[0].restid}}">Cancel</a>
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+        Add Menu
+      </button>
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add Customerized Menu</h4>
+            </div>
+            <div class="modal-body">
+              <div id="menu-content">
+                <div id="menu-1" class="form-inline modal-menu-item">
+                  <button class="menu-button btn btn-default btn-xs btn-danger "
+                          onclick="remove_item('menu-1')" style="float: none;">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                    </span>
+                  </button>
+                  <input type="text" id="course-1" name="course-1.1" value="Appetizer" class="menu-input">
+                  <input type="text" id="course-1" name="course-1.2" class="menu-input"
+                         placeholder="Course name">
+                </div>
+
+                <div id="menu-2" class="form-inline modal-menu-item">
+                  <button class="btn btn-default btn-xs btn-danger menu-button"
+                          onclick="remove_item('menu-2')" style="float: none;">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                    </span>
+                  </button>
+                  <input type="text" id="course-2.2" name="course-2.1" value="Entree" class="menu-input">
+                  <input type="text" id="course-2.2" name="course-2.2" class="menu-input"
+                         placeholder="Course name">
+                </div>
+              </div>
+              <input type="button" value="Add Course" class="btn btn-sm btn-info" id="menu-add-btn"
+                     onclick="add_item()">
+              </input>
+              <input type="button" value="Add Menu" class="btn btn-sm btn-info pull-right" id="add-menu"
+                     onclick="add_menu()">
+              </input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:120px; opacity:0.8">Submit</button>
+    </div>
   </form>
 </div>
 
@@ -171,30 +196,48 @@
    $("#country_value").val(value);
  }
 
- function add() {
-    //Create an input type dynamically.
-    var element = document.createElement("input");
-    var element2 = document.createElement("input");
-    var element3 = document.createElement("br");
-    var element4 = document.createElement("br");
-    //Assign different attributes to the element.
-    element.setAttribute("type", "text");
-    element2.setAttribute("type","text");
+ var start = 3;
+ function add_item() {
+   id = "menu-"+start;
+   id_variable = "'"+id+"'";
+   console.log(id);
+   start += 1;
 
+   $("#menu-content").append("<div id="+id+" class='form-inline modal-menu-item'>");
+   $("#"+id).append('<button class="menu-button btn btn-default btn-xs btn-danger" onclick="remove_item('+id_variable+')" style="float: none;"><span class="glyphicon glyphicon-minus" aria-hidden="true">');
+   $("#"+id).append('<input type="text" id='+id+'.1 name='+id+'.1 placeholder="Course type" class="menu-input">');
+   $("#"+id).append('<input type="text" id='+id+'.2 name='+id+'.2 placeholder="Course name" class="menu-input">');
 
+ }
 
+ function remove_item(div_id){
+   $("#"+div_id).remove();
+ }
 
-    var foo = document.getElementById("fooBar");
-
-    //Append the element in page (in span).
-    foo.appendChild(element);
-    foo.appendChild(element2);
-    foo.appendChild(element3);
-    foo.appendChild(element4);
-
-
-
-}
+ function add_menu(){
+   var count = 0;
+   var name, content;
+   $("#myModal").modal('hide');
+   $(".menu-input").each(function(){
+     console.log(this.nodeName);
+     if(this.nodeName === "INPUT"){
+       if(count % 2 === 0){
+         name = $(this).val();
+         console.log(name);
+         count += 1;
+         $(this).remove();
+       }
+       else{
+         content = $(this).val();
+         console.log(content);
+         $("#review_form").append('<input type="hidden" name="menu'+count+'" value="'+name+':'+content+'">');
+         $(this).remove();
+         count += 1;
+       }
+     }
+   });
+   alert("Menu Added!");
+ }
 </script>
 {% endblock %}
 

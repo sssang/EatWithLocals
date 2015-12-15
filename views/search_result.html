@@ -29,11 +29,12 @@
       </p>
       <form id="avgp_form" action="{{ url_for('search_result') }}" method="POST" >
         <div data-role="rangeslider" id="range_div">
-          <b class="range_label">$0&nbsp&nbsp&nbsp&nbsp</b>
-          <input id="avgp_price" name="p_range" type="text" data-slider-id="ap" data-slider-min="0"
-                 class="span2" data-slider-max="100" data-slider-step="2" data-slider-value="{{price_range}}"
-                 value="{{lower}},{{higher}}">
-          <b class="range_label">&nbsp&nbsp&nbsp&nbsp$100</b>
+          <b class="range_label">${{lowest}}&nbsp&nbsp&nbsp&nbsp</b>
+          <input id="avgp_price" name="p_range" type="text" data-slider-id="ap" data-slider-min="{{lowest}}"
+                 class="span2" data-slider-max="{{highest}}" data-slider-step="2"
+                 data-slider-value="{{price_range}}"
+                 value="{{lowest}},{{highest}}">
+          <b class="range_label">&nbsp&nbsp&nbsp&nbsp${{highest}}</b>
         </div>
 
         <input id="sort_method" type="hidden" name="sort_by" value="{{sort_by}}">
@@ -56,6 +57,7 @@
 <div class="container">
   <div class="row">
   {% for rest in rests %}
+    <div style="height: 200px">
     <div class="col-md-2" style="margin-bottom: 20px">
       <img src="{{ rest.picurl }}" class="img-circle" id="rest_img">
     </div>
@@ -65,6 +67,7 @@
           <a href="{{url_for('rest_index')}}?id={{rest.restid}}">{{rest.restname}} </a></span>
         </p>
         <p>
+          Average Rating: 
           {% if (((rest.rating*10)|int)/10)|int == rest.rating %}
             {% for i in range(0, (rest.rating|int)) %}
               <span><img src="static/pictures/full-star.png" class="star" alt="rating: {{rest.rating}}"></span>
@@ -76,11 +79,31 @@
             <span><img src="static/pictures/half-star.png" class="star" alt="rating: {{rest.rating}}"></span>
           {% endif %}
         </p>
+        {% if rest.country_rating != None %}
+          {% for cr in rest.country_rating %}
+            <p style="font-size: 15px; color:grey;">
+              {{cr.country}}:
+              {% if (((cr.rating*10)|int)/10)|int == cr.rating %}
+                {% for i in range(0, (cr.rating|int)) %}
+                  <span><img src="static/pictures/full-star.png" class="star" alt="rating: {{cr.rating}}"></span>
+                {% endfor %}
+              {% else %}
+                {% for i in range(0, ((cr.rating-0.5)|int)) %}
+                  <span><img src="static/pictures/full-star.png" class="star" alt="rating: {{cr.rating}}"></span>
+                {% endfor %}
+                <span><img src="static/pictures/half-star.png" class="star" alt="rating: {{cr.rating}}"></span>
+              {% endif %}
+            </p>
+          {% endfor %}
+        {% endif %}
+        <p> Average Price: ${{rest.price}} </p>
         <p>
           {{rest.resttag}}
+        </p>
       </div>
     </div>
-  {% endfor %}
+    </div>
+    {% endfor %}
   </div>
 </div>
 

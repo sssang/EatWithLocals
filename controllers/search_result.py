@@ -2,6 +2,7 @@ from flask.views import MethodView
 from flask import request, render_template, redirect, url_for, abort
 
 from models.restuarant import Rest
+from models.country import CountryRating
 
 class SearchAPI(MethodView):
     def get(self):
@@ -21,7 +22,17 @@ class SearchAPI(MethodView):
             if a.restid not in temp:
                 rests.append(a)
 
-        return render_template('search_result.html', rests=rests, keyword=keyword, sort_by="rating",price_range="[20,80]",lower=20,higher=80)
+        prices = sorted(rests, key=lambda rest: rest.price)
+        lowest = prices[0].price
+        highest = prices[len(prices)-1].price
+
+        price_range = "[" + str(lowest) + "," + str(highest) + "]"
+
+        for rest in rests:
+            rest.country_rating = CountryRating.get_country_rating(rest.restid)
+
+        return render_template('search_result.html', rests=rests, keyword=keyword, sort_by="rating",
+                               price_range=price_range, lowest=lowest, highest=highest)
 
     def post(self):
         op = request.form.get('op')
@@ -53,8 +64,6 @@ class SearchAPI(MethodView):
                 for w in rests:
                     if w.price < int(price_range[0]) or w.price > int(price_range[1]):
                         rests.remove(w)
-
-
             else:
                 if current_lat and current_long:
                     rests = Rest.get_rests_by_distance(kw[0].lstrip(), current_lat, current_long)
@@ -71,7 +80,13 @@ class SearchAPI(MethodView):
                     for w in rests:
                         if w.price < int(price_range[0]) or w.price > int(price_range[1]):
                             rests.remove(w)
-            return render_template('search_result.html', rests=rests, keyword=keyword, sort_by=sort_by, country=country,
-                                   price_range='['+price_range[0]+','+ price_range[1]+']',lower=int(price_range[0]),higher=int(price_range[1]))
+
+            for rest in rests:
+                rest.country_rating = CountryRating.get_country_rating(rest.restid)
+
+            return render_template('search_result.html', rests=rests, keyword=keyword,
+                                   sort_by=sort_by, country=country,
+                                   price_range='['+price_range[0]+','+ price_range[1]+']',
+                                   lowest=int(price_range[0]),highest=int(price_range[1]))
         else:
             abort(404)

@@ -20,10 +20,11 @@ class Review(object):
 
         cursor.close()
         connection.close()
-        return [cls(*t) for t in data] if data else []
+        return [cls(t[0], t[1], t[2].title(), t[3], t[4], t[5]) for t in data] if data else []
 
     @classmethod
     def insert(cls, restid, rating, content, country):
+        country = country.lower()
         connection = mysql.connect()
         cursor = connection.cursor()
 
@@ -58,3 +59,5 @@ class Review(object):
 
         cursor.close()
         connection.close()
+        return revid
+

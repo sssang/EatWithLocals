@@ -87,8 +87,9 @@
     </h1>
     <div class ="row">
     {% for review in reviews %}
-      <div class="col-md-2">
-        <p>
+      {% if review.content != "" %}
+       <div class="col-md-2">
+         <p>
           {% if (((review.rating*10)|int)/10)|int == review.rating %}
             {% for i in range(0, (review.rating|int)) %}
               <span>
@@ -105,11 +106,23 @@
               <img src="static/pictures/half-star.png" class="rev_star" alt="rating: {{review.rating}}">
             </span>
          {% endif %}
-       </p>
-      </div>
-      <p style="font-size: 18px;">{{ review.content }}</p>
-      <p style="font-size: 13px; color: grey">The reviewer is from: {{ review.country |capitalize}}</p>
-      <hr style="border-top:1px solid #DEDEDE; width: 68%;">
+         </p>
+       </div>
+       <div class="col-md-10">
+         <p style="font-size: 18px;">{{ review.content }}</p>
+         {% if review.menu != None %}
+          <hr style="border-top:1px solid #DEDEDE; width: 34%; margin-left: 0px;">
+           {% for m in review.menu %}
+             <p style="font-size: 16px;">{{m.course_name}}: {{m.course_content}}</p>
+           {% endfor %}
+         {% endif %}
+         {% if review.country != "" %}
+         <p style="font-size: 13px; color: grey">The reviewer is from: {{ review.country |capitalize}}</p>
+         {% endif %}
+       </div>
+    
+    <hr style="border-top:1px solid rgba(51, 122, 183, 0.57); width: 68%; margin-left: 250px">
+    {% endif %}
     {% endfor %}
     </div>
   </div>
