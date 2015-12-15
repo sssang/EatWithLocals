@@ -57,11 +57,11 @@
 <div class="container">
   <div class="row">
   {% for rest in rests %}
-    <div style="height: 200px">
-    <div class="col-md-2" style="margin-bottom: 20px">
+    <div class="col-md-6" style="height: 250px">
+    <div class="col-md-4" style="margin-bottom: 20px">
       <img src="{{ rest.picurl }}" class="img-circle" id="rest_img">
     </div>
-    <div class="col-md-4" style="margin-bottom: 20px">
+    <div class="col-md-8" style="margin-bottom: 20px">
       <div id="rest_info">
         <p> {{ loop.index }}. &nbsp<span>
           <a href="{{url_for('rest_index')}}?id={{rest.restid}}">{{rest.restname}} </a></span>
