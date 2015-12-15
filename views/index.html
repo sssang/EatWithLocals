@@ -2,9 +2,6 @@
 {% block content %}
   <div class="jumbotron" id="banner">
     <h1 id="header">Eat With Locals</h1>
-    <div id="whitebox">
-      <a href=# id="learn">Learn More</a>
-    </div>
     <div id="search_box">
       <div class="container">
         <form action="{{ url_for('index') }}" method="POST" id="search">
@@ -22,17 +19,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <a href= "{{ url_for('search_result')}}?keyword=ann arbor">
+        <a href= "{{ url_for('search_result')}}?keyword=ann arbor, michigan, united states">
           <img src="static/pictures/AnnArbor.png" id="AnnArbor">
         </a>
       </div>
       <div class="col-md-4">
-        <a href= "{{ url_for('search_result')}}?keyword=cancun">
+        <a href= "{{ url_for('search_result')}}?keyword=cancun, mexico">
           <img src="static/pictures/Cancun.png" id="Cancun">
         </a>
       </div>
       <div class="col-md-4">
-        <a href= "{{ url_for('search_result')}}?keyword=santa monica">
+        <a href= "{{ url_for('search_result')}}?keyword=santa monica, california, united states">
           <img src="static/pictures/SantaMonica.png" id="SantaMonica">
         </a>
       </div>
